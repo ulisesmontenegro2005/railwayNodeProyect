@@ -265,7 +265,7 @@ if (MODE == 'CLUSTER' && cluster.isMaster) {
 
     //----- Listening -----//
     
-    const { PORT } =  process.env.PORT || parseArgs(process.argv.slice(2), config);
+    const PORT =  process.env.PORT;
 
     httpServer.listen(PORT, () => {
         console.log(MODE);

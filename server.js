@@ -129,13 +129,13 @@ if (MODE == 'CLUSTER' && cluster.isMaster) {
     // ----- Session and Passport -----//
 
     app.use(session({
-        secret: 'esteesmisecret',
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            maxAge: 3600000
-        }
-    }))
+    cookie:{
+        maxAge:60000
+        },
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: false
+    }));
     
     app.use(passport.initialize())
     app.use(passport.session())
@@ -265,7 +265,7 @@ if (MODE == 'CLUSTER' && cluster.isMaster) {
 
     //----- Listening -----//
     
-    const PORT =  process.env.PORT;
+    const PORT =  process.env.PORT || 8080;
 
     httpServer.listen(PORT, () => {
         console.log(MODE);
